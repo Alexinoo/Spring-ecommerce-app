@@ -6,7 +6,6 @@ import com.example.ecommerce.exception.BusinessException;
 import com.example.ecommerce.kafka.OrderConfirmation;
 import com.example.ecommerce.kafka.OrderProducer;
 import com.example.ecommerce.mapper.OrderMapper;
-import com.example.ecommerce.orderline.OrderLineService;
 import com.example.ecommerce.product.PurchaseRequest;
 import com.example.ecommerce.repository.OrderRepository;
 import com.example.ecommerce.request.OrderLineRequest;
