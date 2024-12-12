@@ -1,6 +1,6 @@
 package com.example.ecommerce.client;
 
-import lombok.Getter;
+import com.example.ecommerce.response.CustomerResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

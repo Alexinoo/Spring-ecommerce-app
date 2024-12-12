@@ -1,4 +1,4 @@
-package com.example.ecommerce.client;
+package com.example.ecommerce.response;
 
 public record CustomerResponse(
     String id,

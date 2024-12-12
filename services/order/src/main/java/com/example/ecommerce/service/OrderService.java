@@ -1,6 +1,7 @@
 package com.example.ecommerce.service;
 
 import com.example.ecommerce.client.CustomerClient;
+import com.example.ecommerce.client.PaymentClient;
 import com.example.ecommerce.client.ProductClient;
 import com.example.ecommerce.exception.BusinessException;
 import com.example.ecommerce.kafka.OrderConfirmation;
@@ -10,6 +11,7 @@ import com.example.ecommerce.product.PurchaseRequest;
 import com.example.ecommerce.repository.OrderRepository;
 import com.example.ecommerce.request.OrderLineRequest;
 import com.example.ecommerce.request.OrderRequest;
+import com.example.ecommerce.request.PaymentRequest;
 import com.example.ecommerce.response.OrderResponse;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ public class OrderService {
 
     private final CustomerClient customerClient;
     private final ProductClient productClient;
+    private final PaymentClient paymentClient;
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
     private final OrderLineService orderLineService;
@@ -52,7 +55,15 @@ public class OrderService {
             );
         }
 
-        // todo start payment process
+        // start payment process
+        var paymentRequest = new PaymentRequest(
+                newRequest.amount(),
+                newRequest.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
 
         // send order confirmation --> notification-ms (kafka broker)
         orderProducer.sendOrderConfirmation(new OrderConfirmation(

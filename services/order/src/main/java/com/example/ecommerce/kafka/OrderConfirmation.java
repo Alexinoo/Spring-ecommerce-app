@@ -1,6 +1,6 @@
 package com.example.ecommerce.kafka;
 
-import com.example.ecommerce.client.CustomerResponse;
+import com.example.ecommerce.response.CustomerResponse;
 import com.example.ecommerce.paymethod.PaymentMethod;
 import com.example.ecommerce.response.PurchaseResponse;
 
