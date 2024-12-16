@@ -49,7 +49,7 @@ public class OrderService {
             orderLineService.saveOrderLine(
                     new OrderLineRequest(null,
                             order.getId(),
-                            purchaseRequest.productid(),
+                            purchaseRequest.productId(),
                             purchaseRequest.quantity()
                     )
             );
