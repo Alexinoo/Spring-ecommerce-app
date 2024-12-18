@@ -81,6 +81,14 @@ services:
       - microservice-net
 
 
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin:latest
+    ports:
+      - 9411:9411
+    networks:
+      - microservice-net
+
   mail-dev:
     container_name: ms_mail_dev
     image: maildev/maildev
