@@ -60,9 +60,10 @@ public class NotificationConsumer {
         );
 
         //todo send the email
-        var customerName = orderConfirmation.customer().firstname() + " "+ orderConfirmation.customer().lastname();
+       // var customerName = orderConfirmation.customer().firstname() + " "+ orderConfirmation.customer().lastname();
+        var customerName = orderConfirmation.customerResponse().firstname() + " "+ orderConfirmation.customerResponse().lastname();
         emailService.sendOrderConfirmationEmail(
-                orderConfirmation.customer().email(),
+                orderConfirmation.customerResponse().email(),
                 customerName,
                 orderConfirmation.totalAmount(),
                 orderConfirmation.orderReference(),
