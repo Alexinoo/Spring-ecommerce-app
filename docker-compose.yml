@@ -89,6 +89,20 @@ services:
     networks:
       - microservice-net
 
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - 9098:8080
+    environment:
+      # Use the 'start-dev' mode for development
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    networks:
+      - microservice-net
+    command:
+      - start-dev
+
   mail-dev:
     container_name: ms_mail_dev
     image: maildev/maildev
